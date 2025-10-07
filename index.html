@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionable Sources - Question Everything</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Bebas+Neue&family=Courier+Prime:wght@400;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --neon-cyan: #00F0FF;
+            --electric-purple: #B026FF;
+            --neon-pink: #FF00FF;
+            --cyber-blue: #0A1628;
+            --deep-space: #0D0221;
+            --matrix-green: #00FF41;
+            --holographic-silver: #E8F1F5;
+            --dark-void: #000000;
+        }
+        
+        body {
+            font-family: 'Courier Prime', monospace;
+            background-color: var(--light-cream);
+            color: var(--dark-bg);
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, var(--cyber-blue) 0%, var(--deep-space) 100%);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 240, 255, 0.3);
+            border-bottom: 2px solid var(--neon-cyan);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            color: var(--neon-cyan);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-decoration: none;
+            font-weight: 900;
+            text-shadow: 0 0 20px var(--neon-cyan),
+                         0 0 40px var(--neon-cyan);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--holographic-silver);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--electric-purple));
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px var(--neon-cyan);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--cyber-blue) 0%, var(--deep-space) 50%, var(--dark-void) 100%);
+            padding: 8rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: 'CLASSIFIED';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            font-size: 12rem;
+            font-family: 'Orbitron', sans-serif;
+            color: rgba(0, 240, 255, 0.05);
+            z-index: 0;
+            letter-spacing: 2rem;
+            font-weight: 900;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(176, 38, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(0, 240, 255, 0.1) 0%, transparent 50%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--electric-purple), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+            margin-bottom: 1rem;
+            letter-spacing: 6px;
+            animation: glow 3s ease-in-out infinite;
+        }
+        
+        @keyframes glow {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px rgba(0, 240, 255, 0.5));
+            }
+            50% {
+                filter: drop-shadow(0 0 40px rgba(176, 38, 255, 0.8));
+            }
+        }
+        
+        .hero .tagline {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.5rem;
+            color: var(--holographic-silver);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        
+        .redacted {
+            background: var(--neon-cyan);
+            color: var(--deep-space);
+            padding: 2px 8px;
+            cursor: help;
+            transition: all 0.3s;
+            font-weight: 600;
+            box-shadow: 0 0 15px var(--neon-cyan);
+        }
+        
+        .redacted:hover {
+            background: var(--electric-purple);
+            color: var(--holographic-silver);
+            box-shadow: 0 0 25px var(--electric-purple);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--electric-purple));
+            color: var(--deep-space);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Rajdhani', sans-serif;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--electric-purple), var(--neon-pink));
+            transition: left 0.3s;
+            z-index: -1;
+        }
+        
+        .cta-button:hover::before {
+            left: 0;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 30px rgba(176, 38, 255, 0.8);
+            color: var(--holographic-silver);
+        }
+        
+        /* Section Styling */
+        section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--electric-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 4px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+        
+        .stamp {
+            display: inline-block;
+            border: 2px solid var(--neon-cyan);
+            padding: 0.5rem 1rem;
+            transform: rotate(-2deg);
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--neon-cyan);
+            margin-bottom: 1rem;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+            background: rgba(0, 240, 255, 0.05);
+            letter-spacing: 2px;
+        }
+        
+        /* Category Grid */
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .category-card {
+            background: linear-gradient(135deg, rgba(10, 22, 40, 0.8), rgba(13, 2, 33, 0.8));
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--neon-cyan);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .category-card::before {
+            content: '◉';
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 2rem;
+            color: var(--neon-cyan);
+            opacity: 0;
+            transition: opacity 0.3s;
+            text-shadow: 0 0 15px var(--neon-cyan);
+        }
+        
+        .category-card:hover::before {
+            opacity: 0.6;
+        }
+        
+        .category-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+        
+        .category-card:hover::after {
+            left: 100%;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.4),
+                        inset 0 0 20px rgba(176, 38, 255, 0.2);
+            border-color: var(--electric-purple);
+        }
+        
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 10px var(--neon-cyan));
+        }
+        
+        .category-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--neon-cyan);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        
+        .category-card p {
+            color: var(--holographic-silver);
+            font-weight: 300;
+        }
+        
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .product-card {
+            background: linear-gradient(135deg, rgba(10, 22, 40, 0.9), rgba(13, 2, 33, 0.9));
+            border: 1px solid var(--electric-purple);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--electric-purple));
+            color: var(--deep-space);
+            padding: 0.5rem 1rem;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 10;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--cyber-blue), var(--deep-space));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border-bottom: 1px solid var(--neon-cyan);
+            position: relative;
+        }
+        
+        .product-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(0, 240, 255, 0.03) 10px,
+                    rgba(0, 240, 255, 0.03) 11px
+                );
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            color: var(--neon-cyan);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        
+        .tinfoil-rating {
+            margin: 0.5rem 0;
+            filter: drop-shadow(0 0 5px var(--electric-purple));
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--electric-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 1rem 0;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(176, 38, 255, 0.4);
+            border-color: var(--neon-cyan);
+        }
+        
+        .product-info p {
+            color: var(--holographic-silver);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+        
+        /* Blog Preview */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .blog-card {
+            background: linear-gradient(135deg, rgba(10, 22, 40, 0.8), rgba(13, 2, 33, 0.8));
+            border-left: 3px solid var(--neon-cyan);
+            padding: 2rem;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 0;
+            background: linear-gradient(180deg, var(--neon-cyan), var(--electric-purple));
+            transition: height 0.3s;
+        }
+        
+        .blog-card:hover::before {
+            height: 100%;
+        }
+        
+        .blog-card:hover {
+            transform: translateX(10px);
+            box-shadow: -5px 5px 30px rgba(0, 240, 255, 0.3);
+            border-left-color: var(--electric-purple);
+        }
+        
+        .blog-date {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--neon-cyan);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+        
+        .blog-card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            color: var(--holographic-silver);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .blog-excerpt {
+            color: var(--holographic-silver);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+        
+        .read-more {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-shadow: 0 0 5px rgba(0, 240, 255, 0.3);
+        }
+        
+        .read-more:hover {
+            color: var(--electric-purple);
+            transform: translateX(5px);
+            text-shadow: 0 0 10px rgba(176, 38, 255, 0.5);
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(135deg, var(--cyber-blue) 0%, var(--deep-space) 100%);
+            color: var(--holographic-silver);
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+            border-top: 2px solid var(--neon-cyan);
+            border-bottom: 2px solid var(--neon-cyan);
+        }
+        
+        .newsletter::before {
+            content: '◉';
+            position: absolute;
+            font-size: 25rem;
+            opacity: 0.03;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--neon-cyan);
+        }
+        
+        .newsletter h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--electric-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+        
+        .newsletter p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 300;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem;
+            border: 2px solid var(--neon-cyan);
+            background: rgba(13, 2, 33, 0.8);
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1rem;
+            color: var(--holographic-silver);
+            transition: all 0.3s;
+        }
+        
+        .newsletter-form input:focus {
+            outline: none;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+            border-color: var(--electric-purple);
+        }
+        
+        .newsletter-form button {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--electric-purple));
+            color: var(--deep-space);
+            border: none;
+            cursor: pointer;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+        }
+        
+        .newsletter-form button:hover {
+            background: linear-gradient(135deg, var(--electric-purple), var(--neon-pink));
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(176, 38, 255, 0.7);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(180deg, var(--deep-space) 0%, var(--dark-void) 100%);
+            color: var(--holographic-silver);
+            padding: 3rem 2rem 1rem;
+            border-top: 1px solid var(--neon-cyan);
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--neon-cyan);
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: var(--holographic-silver);
+            text-decoration: none;
+            line-height: 2;
+            transition: all 0.3s;
+            font-weight: 300;
+        }
+        
+        .footer-section a:hover {
+            color: var(--neon-cyan);
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+            transform: translateX(5px);
+            display: inline-block;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .social-links a {
+            transition: all 0.3s;
+            filter: drop-shadow(0 0 5px var(--neon-cyan));
+        }
+        
+        .social-links a:hover {
+            filter: drop-shadow(0 0 15px var(--electric-purple));
+            transform: scale(1.2);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 240, 255, 0.2);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Questionable Sources</a>
+            <ul class="nav-links">
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#conspiracies">Conspiracies</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#forum">Forum</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Question Everything</h1>
+            <p class="tagline">Apparel for <span class="redacted">Truth Seekers</span> & Critical Thinkers</p>
+            <a href="#shop" class="cta-button">Uncover the Truth</a>
+        </div>
+    </section>
+
+    <!-- Shop by Conspiracy -->
+    <section id="conspiracies">
+        <div class="section-header">
+            <div class="stamp">DECLASSIFIED</div>
+            <h2>Shop by Conspiracy</h2>
+        </div>
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="category-icon">🛸</div>
+                <h3>UFOs & Aliens</h3>
+                <p>The truth is out there</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🐸</div>
+                <h3>Gay Frogs</h3>
+                <p>They're turning them</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🦅</div>
+                <h3>Birds Aren't Real</h3>
+                <p>Government drones since 1959</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🦶</div>
+                <h3>Cryptids</h3>
+                <p>Bigfoot, Mothman & friends</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🌍</div>
+                <h3>Flat Earth</h3>
+                <p>Level-headed thinking</p>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🏛️</div>
+                <h3>Gov Coverups</h3>
+                <p>MK-Ultra, Area 51 & more</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="shop">
+        <div class="section-header">
+            <div class="stamp">TOP SECRET</div>
+            <h2>Featured Products</h2>
+        </div>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-badge">NEW DROP</div>
+                <div class="product-image">👕</div>
+                <div class="product-info">
+                    <h3>"The Birds Work for the Bourgeoisie"</h3>
+                    <div class="tinfoil-rating">🎩🎩🎩🎩🎩</div>
+                    <p>Classic T-Shirt featuring declassified avian surveillance imagery</p>
+                    <div class="product-price">$24.99</div>
+                    <a href="#" class="cta-button" style="width: 100%; text-align: center;">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-badge">BEST SELLER</div>
+                <div class="product-image">👕</div>
+                <div class="product-info">
+                    <h3>"Chemtrails & Chill"</h3>
+                    <div class="tinfoil-rating">🎩🎩🎩🎩</div>
+                    <p>Vintage-style design with authentic atmospheric documentation</p>
+                    <div class="product-price">$24.99</div>
+                    <a href="#" class="cta-button" style="width: 100%; text-align: center;">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-badge">LIMITED</div>
+                <div class="product-image">☕</div>
+                <div class="product-info">
+                    <h3>"They're Turning the Frogs Gay" Mug</h3>
+                    <div class="tinfoil-rating">🎩🎩🎩🎩🎩</div>
+                    <p>For your morning atrazine-free coffee</p>
+                    <div class="product-price">$16.99</div>
+                    <a href="#" class="cta-button" style="width: 100%; text-align: center;">Add to Cart</a>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🧢</div>
+                <div class="product-info">
+                    <h3>"I Want to Believe" Dad Hat</h3>
+                    <div class="tinfoil-rating">🎩🎩🎩</div>
+                    <p>Embroidered classic with X-Files aesthetic</p>
+                    <div class="product-price">$19.99</div>
+                    <a href="#" class="cta-button" style="width: 100%; text-align: center;">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog">
+        <div class="section-header">
+            <div class="stamp">LEAKED INTEL</div>
+            <h2>The Truth Blog</h2>
+        </div>
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="blog-date">📅 October 1, 2025</div>
+                <h3>Deep Dive: The History of Birds Aren't Real</h3>
+                <p class="blog-excerpt">From satirical movement to cultural phenomenon, we trace the origins of one of the internet's favorite conspiracy theories. Plus, why our designs capture the essence of this brilliant piece of performance art.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+            <div class="blog-card">
+                <div class="blog-date">📅 September 28, 2025</div>
+                <h3>New Drop Alert: Cryptid Collection</h3>
+                <p class="blog-excerpt">Our latest designs featuring Bigfoot, Mothman, and the Jersey Devil. Each shirt comes with a field guide to spotting these elusive creatures. Perfect for your next forest expedition.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+            <div class="blog-card">
+                <div class="blog-date">📅 September 25, 2025</div>
+                <h3>Behind the Design: Gay Frogs & Atrazine</h3>
+                <p class="blog-excerpt">The real science behind the meme, how we approached this controversial design with humor and respect, and why sometimes the truth really is stranger than fiction.</p>
+                <a href="#" class="read-more">Read More →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h2>Join the Truth Seekers</h2>
+        <p>Get declassified updates on new drops, exclusive designs, and insider intel. No spam, no tracking (that we'll admit to).</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Enter your email (secure transmission)" required>
+            <button type="submit">Subscribe</button>
+        </form>
+        <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">⚠️ By subscribing, you acknowledge that the truth is out there.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Shop</h3>
+                <ul>
+                    <li><a href="#">T-Shirts</a></li>
+                    <li><a href="#">Hoodies</a></li>
+                    <li><a href="#">Hats & Accessories</a></li>
+                    <li><a href="#">Mugs</a></li>
+                    <li><a href="#">Poster Art</a></li>
+                    <li><a href="#">All Products</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Community</h3>
+                <ul>
+                    <li><a href="#">Forum</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Affiliate Program</a></li>
+                    <li><a href="#">Customer Reviews</a></li>
+                    <li><a href="#">Submit Your Theory</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Info</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow the Signal</h3>
+                <div class="social-links">
+                    <a href="#">📺</a>
+                    <a href="#">📱</a>
+                    <a href="#">📷</a>
+                    <a href="#">🐦</a>
+                </div>
+                <p style="margin-top: 1rem;">Question everything.<br>Except our return policy.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Questionable Sources. All rights reserved (or are they?)</p>
+            <p style="margin-top: 0.5rem;">🛸 Made with conspiracy and coffee ☕</p>
+        </div>
+    </footer>
+</body>
+</html>
